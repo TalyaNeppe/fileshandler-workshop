@@ -1,6 +1,32 @@
+import { useState } from "react";
 import "./App.css";
+import {
+  useFiles,
+  FileInput,
+  UploadedFile,
+  UploadError,
+} from "@hilma/fileshandler-client";
 
 function App() {
+  const [fileObj, setFileObj] = useState<UploadedFile | null>(null);
+  const filesUploader = useFiles(["post"]);
+
+  const handleFileChange = (value: UploadedFile): void => {
+    setFileObj(value);
+  };
+
+  const handleError = (error: UploadError) => {
+    console.error("Error while upload file in client", error);
+  };
+
+  const send = async () => {
+    try {
+      await filesUploader.post("/upload-image");
+    } catch (error) {
+      console.error("error while upload files to server", error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="instructions">
@@ -50,6 +76,20 @@ function App() {
       </div>
       <div className="work-page">
         <h2>Upload files here</h2>
+        <FileInput
+          filesUploader={filesUploader}
+          type={"image"}
+          onChange={handleFileChange}
+          onError={handleError}
+        />
+        {fileObj && <button onClick={send}>send</button>}
+        {fileObj && (
+          <>
+            <br />
+            <h4>preview:</h4>
+            <img src={fileObj.link} alt="" />
+          </>
+        )}
       </div>
     </div>
   );
