@@ -37,11 +37,12 @@ function App() {
         <ol>
           <li> Install files package</li>
           <li> Use basic FileInput component and filesUploader</li>
-          <li>
-            Present the image before sending it to the server Advance options:
-            add handle for errors, delete file, handle multiple files with
-            MultipleFileInput
-          </li>
+          <li>Present the image before sending it to the server</li>
+          <br />
+          <span>
+            Advance options: add handle for errors, delete file, handle multiple
+            files with MultipleFileInput
+          </span>
         </ol>
         <a
           href="https://hilma.atlassian.net/wiki/spaces/TD/pages/83362528/Hilma+Fileshandler#client"
@@ -64,10 +65,11 @@ function App() {
             Display the saved image on the client-side once it's stored on the
             server
           </li>
-          <li>
+          <br />
+          <span>
             Advance options: save multiple files, save files with different
             types (image and file)
-          </li>
+          </span>
         </ol>
         <a
           href="https://hilma.atlassian.net/wiki/spaces/TD/pages/83362528/Hilma+Fileshandler#server"
