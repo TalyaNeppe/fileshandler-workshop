@@ -20,6 +20,11 @@ function App() {
     console.error("Error while upload file in client", error);
   };
 
+  const handleDeleteImage = () => {
+    filesUploader.deleteAll();
+    setFileObj(null);
+  };
+
   const send = async () => {
     try {
       const res = await filesUploader.post("/api/cat/upload-image");
@@ -92,6 +97,7 @@ function App() {
             <br />
             <h4>preview:</h4>
             <img src={fileObj.link} alt="" />
+            <button onClick={handleDeleteImage}>delete</button>
           </>
         )}
 
