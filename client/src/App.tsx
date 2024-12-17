@@ -9,6 +9,7 @@ import {
 
 function App() {
   const [fileObj, setFileObj] = useState<UploadedFile | null>(null);
+  const [resultPath, setResultPath] = useState<string | null>(null);
   const filesUploader = useFiles(["post"]);
 
   const handleFileChange = (value: UploadedFile): void => {
@@ -21,7 +22,8 @@ function App() {
 
   const send = async () => {
     try {
-      await filesUploader.post("/upload-image");
+      const res = await filesUploader.post("/api/cat/upload-image");
+      setResultPath(res.data);
     } catch (error) {
       console.error("error while upload files to server", error);
     }
@@ -88,6 +90,14 @@ function App() {
             <br />
             <h4>preview:</h4>
             <img src={fileObj.link} alt="" />
+          </>
+        )}
+
+        {resultPath && (
+          <>
+            <br />
+            <h4>result:</h4>
+            <img src={`/api${resultPath}`} alt="" />
           </>
         )}
       </div>
