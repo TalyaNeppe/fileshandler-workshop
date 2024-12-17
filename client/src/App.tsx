@@ -39,10 +39,7 @@ function App() {
           <li> Use basic FileInput component and filesUploader</li>
           <li>Present the image before sending it to the server</li>
           <br />
-          <span>
-            Advance options: add handle for errors, delete file, handle multiple
-            files with MultipleFileInput
-          </span>
+          <span>Advance options: add handle for errors, delete file</span>
         </ol>
         <a
           href="https://hilma.atlassian.net/wiki/spaces/TD/pages/83362528/Hilma+Fileshandler#client"
@@ -67,8 +64,7 @@ function App() {
           </li>
           <br />
           <span>
-            Advance options: save multiple files, save files with different
-            types (image and file)
+            Advance options: save files with different types (image and file)
           </span>
         </ol>
         <a
