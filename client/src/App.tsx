@@ -14,7 +14,7 @@ function App() {
           <span>Advance options: add handle for errors, delete file</span>
         </ol>
         <a
-          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/83362528/Hilma+Fileshandler#client"
+          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/1153597441/Fileshandler+-+Getting+started#Client"
           target="blank"
         >
           Link to docs
@@ -40,7 +40,7 @@ function App() {
           </span>
         </ol>
         <a
-          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/83362528/Hilma+Fileshandler#server"
+          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/1153597441/Fileshandler+-+Getting+started#Server"
           target="blank"
         >
           Link to docs
