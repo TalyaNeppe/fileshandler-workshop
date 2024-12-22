@@ -8,12 +8,12 @@ import {
 } from "@hilma/fileshandler-client";
 
 function App() {
-  const [fileObj, setFileObj] = useState<UploadedFile | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
   const [resultPath, setResultPath] = useState<string | null>(null);
   const filesUploader = useFiles(["post"]);
 
   const handleFileChange = (value: UploadedFile): void => {
-    setFileObj(value);
+    setUploadedFile(value);
   };
 
   const handleError = (error: UploadError) => {
@@ -22,7 +22,7 @@ function App() {
 
   const handleDeleteImage = () => {
     filesUploader.deleteAll();
-    setFileObj(null);
+    setUploadedFile(null);
   };
 
   const send = async () => {
@@ -47,7 +47,7 @@ function App() {
           <span>Advance options: add handle for errors, delete file</span>
         </ol>
         <a
-          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/83362528/Hilma+Fileshandler#client"
+          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/1153597441/Fileshandler+-+Getting+started#Client"
           target="blank"
         >
           Link to docs
@@ -73,7 +73,7 @@ function App() {
           </span>
         </ol>
         <a
-          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/83362528/Hilma+Fileshandler#server"
+          href="https://hilma.atlassian.net/wiki/spaces/TD/pages/1153597441/Fileshandler+-+Getting+started#Server"
           target="blank"
         >
           Link to docs
@@ -87,12 +87,12 @@ function App() {
           onChange={handleFileChange}
           onError={handleError}
         />
-        {fileObj && <button onClick={send}>send</button>}
-        {fileObj && (
+        {uploadedFile && <button onClick={send}>send</button>}
+        {uploadedFile && (
           <>
             <br />
             <h4>preview:</h4>
-            <img src={fileObj.link} alt="" />
+            <img src={uploadedFile.link} alt="" />
             <button onClick={handleDeleteImage}>delete</button>
           </>
         )}
