@@ -8,12 +8,12 @@ import {
 } from "@hilma/fileshandler-client";
 
 function App() {
-  const [fileObj, setFileObj] = useState<UploadedFile | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
   const [resultPath, setResultPath] = useState<string | null>(null);
   const filesUploader = useFiles(["post"]);
 
   const handleFileChange = (value: UploadedFile): void => {
-    setFileObj(value);
+    setUploadedFile(value);
   };
 
   const handleError = (error: UploadError) => {
@@ -82,12 +82,12 @@ function App() {
           onChange={handleFileChange}
           onError={handleError}
         />
-        {fileObj && <button onClick={send}>send</button>}
-        {fileObj && (
+        {uploadedFile && <button onClick={send}>send</button>}
+        {uploadedFile && (
           <>
             <br />
             <h4>preview:</h4>
-            <img src={fileObj.link} alt="" />
+            <img src={uploadedFile.link} alt="" />
           </>
         )}
 
