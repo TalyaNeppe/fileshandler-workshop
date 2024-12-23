@@ -1,6 +1,34 @@
+import { useState } from "react";
 import "./App.css";
+import {
+  useFiles,
+  FileInput,
+  UploadedFile,
+  UploadError,
+} from "@hilma/fileshandler-client";
 
 function App() {
+  const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
+  const [resultPath, setResultPath] = useState<string | null>(null);
+  const filesUploader = useFiles(["post"]);
+
+  const handleFileChange = (value: UploadedFile): void => {
+    setUploadedFile(value);
+  };
+
+  const handleError = (error: UploadError) => {
+    console.error("Error while upload file in client", error);
+  };
+
+  const send = async () => {
+    try {
+      const res = await filesUploader.post("/api/cat/upload-image");
+      setResultPath(res.data);
+    } catch (error) {
+      console.error("error while upload files to server", error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="instructions">
@@ -48,6 +76,28 @@ function App() {
       </div>
       <div className="work-page">
         <h2>Upload files here</h2>
+        <FileInput
+          filesUploader={filesUploader}
+          type={"image"}
+          onChange={handleFileChange}
+          onError={handleError}
+        />
+        {uploadedFile && <button onClick={send}>send</button>}
+        {uploadedFile && (
+          <>
+            <br />
+            <h4>preview:</h4>
+            <img src={uploadedFile.link} alt="" />
+          </>
+        )}
+
+        {resultPath && (
+          <>
+            <br />
+            <h4>result:</h4>
+            <img src={`/api${resultPath}`} alt="" />
+          </>
+        )}
       </div>
     </div>
   );
